@@ -4,7 +4,10 @@
 #
 all:
   children:
-    app-servers:
+    app_servers:
       hosts:
         host1:
+          ansible_host: 192.168.1.10
         host2:
+      vars:
+        ansible_user: myuser

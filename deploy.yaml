@@ -1,0 +1,9 @@
+---
+  - hosts: all
+    gather_facts: true
+
+    tasks:
+    - name: Secure Server
+      import_role:
+        name: geerlingguy.security
+      become: true

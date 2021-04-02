@@ -14,7 +14,7 @@
       authorized_key:
         user: '{{ service_user }}'
         state: present
-        key: 'keys/{{ service_account_key }}'
+        key: '{{ service_account_key }}'
  
     - name: Create regular user account
       user:

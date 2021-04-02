@@ -1,0 +1,10 @@
+# Ansible inventory file: lists the hosts that will be used when the playbook
+# runs. Learn more at:
+#   https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+#
+all:
+  children:
+    app-servers:
+      hosts:
+        host1:
+        host2:

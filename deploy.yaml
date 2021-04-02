@@ -6,8 +6,8 @@
     - name: Create Service account for Ansible
       remote_user: root
       user:
-        name: '{{ ansible_user }}'
-        password: '{{ ansible_pass }}'
+        name: '{{ service_user }}'
+        password: '{{ service_pass }}'
         comment: "Ansible Service account"
         state: present
 

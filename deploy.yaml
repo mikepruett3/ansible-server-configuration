@@ -3,8 +3,11 @@
     gather_facts: true
 
     tasks:
+    - name: Temporarily set ansible_user to root
+      set_fact:
+        ansible_user: root
+        
     - name: Create Service account for Ansible
-      remote_user: root
       user:
         name: '{{ ansible_user }}'
         password: '{{ ansible_pass }}'

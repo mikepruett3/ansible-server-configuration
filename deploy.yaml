@@ -2,7 +2,7 @@
   - hosts: all
     gather_facts: true
     remote_user: root
-    ansible_password: '{{ root_pass }}'
+    password: '{{ root_pass }}'
     tasks:
     - name: Create Service account for Ansible
       user:

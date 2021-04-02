@@ -2,7 +2,11 @@
   - hosts: all
     gather_facts: true
 
-    tasks: 
+    tasks:
+    - name: Set root as ansible_user
+      set_fact:
+        ansible_user: root
+
     - name: Create Service account for Ansible
       remote_user: root
       user:

@@ -3,9 +3,6 @@
     gather_facts: true
     remote_user: root
     tasks:
-    - name: Collect facts
-      setup:
-
     - name: Create Service account for Ansible
       user:
         name: '{{ service_user }}'

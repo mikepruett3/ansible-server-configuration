@@ -6,7 +6,7 @@
     - name: Create Service account for Ansible
       user:
         name: '{{ service_user }}'
-        password: '{{ ansible_pass }}'
+        password: '{{ service_pass_enc }}'
         comment: "Ansible Service account"
         state: present
 

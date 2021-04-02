@@ -11,4 +11,5 @@ all:
         host2:
       vars:
         service_user: myserviceuser
-        ansible_pass: password-for-account
+        service_pass_enc: "encrypted-password-for-account"
+        ansible_pass: "password-for-account"

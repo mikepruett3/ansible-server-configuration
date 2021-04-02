@@ -12,3 +12,4 @@ all:
       vars:
         ansible_user: myserviceuser
         ansible_pass: password-for-account
+        root_pass: my-root-password

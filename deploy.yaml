@@ -6,4 +6,7 @@
     - name: Secure Server
       import_role:
         name: geerlingguy.security
+      vars:
+        security_ssh_port: 22
+        security_ssh_password_authentication: "yes"
       become: true

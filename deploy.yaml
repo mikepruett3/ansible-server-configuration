@@ -6,15 +6,19 @@
     - name: Create Service account for Ansible
       user:
         name: '{{ service_user }}'
-        password: '{{ service_pass }}'
+        password: '{{ ansible_pass }}'
         comment: "Ansible Service account"
         state: present
 
-    #- name: Secure Server
-    #  import_role:
-    #    name: geerlingguy.security
-    #  vars:
-    #    security_ssh_port: 22
-    #    security_ssh_password_authentication: "yes"
-    #    security_sudoers_passworded:
-    #  become: true
+  #- hosts: all
+  #  gather_facts: false
+  #  remote_user: '{{ service_user }}'
+  #  tasks:
+  #  - name: Secure Server
+  #    import_role:
+  #      name: geerlingguy.security
+  #    vars:
+  #      security_ssh_port: 22
+  #      security_ssh_password_authentication: "yes"
+  #      security_sudoers_passworded:
+  #    become: true

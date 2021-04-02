@@ -10,6 +10,5 @@ all:
           ansible_host: 192.168.1.10
         host2:
       vars:
-        ansible_user: myserviceuser
+        service_user: myserviceuser
         ansible_pass: password-for-account
-        root_pass: my-root-password

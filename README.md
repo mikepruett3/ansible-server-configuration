@@ -20,3 +20,15 @@ If you are not using SSH agent, you may need to configure Ansible to you the cor
 ## Pull down requirements from Ansible Galaxy
 From the root of this project, run: `ansible-galaxy install -r requirements.yaml`
 
+## Install required utilities
+
+Need the following bash tools:
+- sshpass
+
+
+# Usage
+
+## Deploy.yaml
+
+```bash
+ansible -i hosts.yaml deploy.yaml --ask-pass

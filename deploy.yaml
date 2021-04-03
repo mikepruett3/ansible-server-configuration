@@ -11,10 +11,14 @@
         state: present
 
     - name: Upload Service account SSH Private Key
+      copy:
+        src: 'keys/{{ service_account_key }}'
+        dst: /tmp/tempkey
+
       authorized_key:
         user: '{{ service_user }}'
         state: present
-        key: "{{ lookup('file', 'keys/{{ service_account_key }}') }}"
+        key: "{{ lookup('file', '/tmp/tempkey') }}"
  
     - name: Create regular user account
       user:

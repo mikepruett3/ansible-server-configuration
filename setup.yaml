@@ -7,6 +7,21 @@
       - vars/main.yaml
 
     tasks:
+    - name: Create Ansible Service Account
+      import_role:
+        name: mikepruett3.user_setup
+      vars:
+        user_account: '{{ ansible_service_user }}'
+        user_password_enc: '{{ ansible_service_pass_enc }}'
+        user_account_key: '{{ ansible_service_account_key }}'
+
+    - name: Create Regular Account
+      import_role:
+        name: mikepruett3.user_setup
+      vars:
+        user_account: '{{ regular_user }}'
+        user_password_enc: '{{ regular_pass_enc }}'
+
     - name: Import mikepruett3.user_setup role
       import_role:
         name: mikepruett3.user_setup

@@ -13,10 +13,11 @@
         name: geerlingguy.security
       #become: true
 
-    - name: Import geerlingguy.firewall role
-      import_role:
-        name: geerlingguy.firewall
-
     - name: Import geerlingguy.ntp role
       import_role:
         name: geerlingguy.ntp
+
+
+    - name: Import geerlingguy.firewall role
+      import_role:
+        name: geerlingguy.firewall

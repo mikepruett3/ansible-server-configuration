@@ -43,7 +43,7 @@
       authorized_key:
         user: '{{ regular_user }}'
         state: present
-        key: "{{ lookup('file', 'keys/{{ regular_user }}@{{ ansible_hostname }}') }}"
+        key: "{{ lookup('file', 'keys/{{ regular_user }}@{{ ansible_hostname }}.pub') }}"
 
     - name: Import geerlingguy.security role
       import_role:

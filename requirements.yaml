@@ -1,6 +1,7 @@
 ---
 roles:
   - name: geerlingguy.repo-epel
+  - name: mikepruett3.user_setup
   - name: geerlingguy.security
   - name: geerlingguy.firewall
   - name: geerlingguy.ntp

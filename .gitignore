@@ -1,4 +1,4 @@
 /roles/geerlingguy.*
 /hosts.yml
 /hosts.yaml
-/files/keys
+/keys

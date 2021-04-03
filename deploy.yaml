@@ -10,11 +10,6 @@
         comment: "Ansible Service account"
         state: present
 
-    - name: Upload Service account SSH Public key
-      copy:
-        src: keys/{{ service_account_key }}
-        dest: /tmp/tempkey
-
     - name: Add Service account SSH Public key to authorized_keys
       authorized_key:
         user: '{{ service_user }}'
@@ -26,6 +21,9 @@
         name: '{{ regular_user }}'
         password: '{{ regular_pass_enc }}'
         comment: "{{ regular_user }}"
+        generate_ssh_key: yes
+        ssh_key_file: .ssh/id_rsa
+        ssh_key_type: ed25519
         state: present
 
     - name: Import geerlingguy.security role

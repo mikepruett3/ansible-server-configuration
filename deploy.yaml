@@ -8,10 +8,6 @@
       - vars/main.yaml
 
     tasks:
-    - name: Import geerlingguy.security role
-      import_role:
-        name: geerlingguy.security
-      #become: true
 
     - name: Import geerlingguy.ntp role
       import_role:

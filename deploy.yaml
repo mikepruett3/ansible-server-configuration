@@ -24,7 +24,20 @@
         generate_ssh_key: yes
         ssh_key_file: .ssh/id_rsa
         ssh_key_type: ed25519
+        ssh_key_comment: "{{ regular_user }}@{{ ansible_hostname }}"
         state: present
+
+    - name: Download regular account SSH Private key
+      fetch:
+        src: '/home/{{ regular_user }}/.ssh/id_rsa'
+        dest: keys/
+        flat: yes
+
+    - name: Download regular account SSH Public key
+      fetch:
+        src: '/home/{{ regular_user }}/.ssh/id_rsa.pub'
+        dest: keys/
+        flat: yes
 
     - name: Import geerlingguy.security role
       import_role:

@@ -5,3 +5,4 @@ firewall_allowed_tcp_ports:
   - "443"
 
 ntp_timezone: America/Chicago
+ntp_area: 'north-america'

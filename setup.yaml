@@ -14,6 +14,7 @@
         user_account: '{{ ansible_service_user }}'
         user_password_enc: '{{ ansible_service_pass_enc }}'
         user_account_key: '{{ ansible_service_account_key }}'
+        key_repository: '{{ key_repository }}'
 
     - name: Create Regular Account
       import_role:
@@ -22,6 +23,7 @@
         user_account: '{{ regular_user }}'
         user_password_enc: '{{ regular_pass_enc }}'
         user_account_key: '{{ regular_account_key }}'
+        key_repository: '{{ key_repository }}'
 
     - name: Import mikepruett3.user_setup role
       import_role:

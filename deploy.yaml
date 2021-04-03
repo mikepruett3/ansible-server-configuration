@@ -12,7 +12,7 @@
 
     - name: Upload Service account SSH Public key
       copy:
-        src: files/keys/{{ service_account_key }}
+        src: keys/{{ service_account_key }}
         dest: /tmp/tempkey
 
     - name: Add Service account SSH Public key to authorized_keys

@@ -2,10 +2,17 @@
   - hosts: all
     gather_facts: true
     remote_user: '{{ service_user }}'
+    become: true
+
+    vars_files:
+      - vars/main.yaml
 
     tasks:
-
     - name: Import geerlingguy.security role
       import_role:
         name: geerlingguy.security
-      become: true
+      #become: true
+
+    - name: Import geerlingguy.firewall role
+      import_role:
+        name: geerlingguy.firewall

@@ -47,6 +47,10 @@
         state: present
         key: "{{ lookup('file', 'keys/{{ regular_user }}@{{ ansible_hostname }}.pub') }}"
 
+    - name: Import eerlingguy.repo-epel role
+      import_role:
+        name: eerlingguy.repo-epel
+
     - name: Import geerlingguy.security role
       import_role:
         name: geerlingguy.security

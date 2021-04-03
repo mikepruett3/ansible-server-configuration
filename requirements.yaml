@@ -1,5 +1,6 @@
 ---
 roles:
+  - name: eerlingguy.repo-epel
   - name: geerlingguy.security
   - name: geerlingguy.firewall
   - name: geerlingguy.ntp

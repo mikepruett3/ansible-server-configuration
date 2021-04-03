@@ -16,3 +16,7 @@ all:
         service_account_key: "ssh-private-key-file"
         regular_user: myuser
         regular_pass_enc: "encrypted-password-for-regular-account"
+        security_ssh_port: 22
+        security_ssh_password_authentication: "no"
+        security_sudoers_passwordless: ["myserviceuser"]
+        security_sudoers_passworded: ["myuser"]

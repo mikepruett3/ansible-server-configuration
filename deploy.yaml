@@ -48,9 +48,9 @@
     - name: Import geerlingguy.security role
       import_role:
         name: geerlingguy.security
-      vars:
-        security_ssh_port: 22
-        security_ssh_password_authentication: "yes"
-        security_sudoers_passwordless: ["{{ service_user }}"]
-        security_sudoers_passworded: ["{{ regular_user }}"]
-      become: true
+      #vars:
+      #  security_ssh_port: 22
+      #  security_ssh_password_authentication: "yes"
+      #  security_sudoers_passwordless: ["{{ service_user }}"]
+      #  security_sudoers_passworded: ["{{ regular_user }}"]
+      #become: true

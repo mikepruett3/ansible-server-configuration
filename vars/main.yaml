@@ -6,3 +6,4 @@ firewall_allowed_tcp_ports:
 
 ntp_timezone: America/Chicago
 ntp_area: 'north-america'
+ntp_manage_config: true

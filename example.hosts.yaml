@@ -16,4 +16,3 @@ all:
         service_account_key: "ssh-private-key-file"
         regular_user: myuser
         regular_pass_enc: "encrypted-password-for-regular-account"
-        #ansible_pass: "unencrypted-password-for-account"

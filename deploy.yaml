@@ -3,14 +3,14 @@
     gather_facts: true
     remote_user: root
     tasks:
-    - name: Create Service account for Ansible
+    - name: Create service account for Ansible
       user:
         name: '{{ service_user }}'
         password: '{{ service_pass_enc }}'
         comment: "Ansible Service account"
         state: present
 
-    - name: Add Service account SSH Public key to authorized_keys
+    - name: Add service account SSH Public key to authorized_keys
       authorized_key:
         user: '{{ service_user }}'
         state: present
@@ -27,17 +27,23 @@
         ssh_key_comment: "{{ regular_user }}@{{ ansible_hostname }}"
         state: present
 
-    - name: Download regular account SSH Private key
+    - name: Download regular user account SSH Private key
       fetch:
         src: '/home/{{ regular_user }}/.ssh/id_rsa'
         dest: 'keys/{{ regular_user }}@{{ ansible_hostname }}'
         flat: yes
 
-    - name: Download regular account SSH Public key
+    - name: Download regular user account SSH Public key
       fetch:
         src: '/home/{{ regular_user }}/.ssh/id_rsa.pub'
         dest: 'keys/{{ regular_user }}@{{ ansible_hostname }}.pub'
         flat: yes
+
+    - name: Add regular user account SSH Public key to authorized_keys
+      authorized_key:
+        user: '{{ regular_user }}'
+        state: present
+        key: "{{ lookup('file', 'keys/{{ regular_user }}@{{ ansible_hostname }}') }}"
 
     - name: Import geerlingguy.security role
       import_role:

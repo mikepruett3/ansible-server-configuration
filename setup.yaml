@@ -13,6 +13,7 @@
       vars:
         user_account: '{{ regular_user }}'
         user_password_enc: '{{ regular_pass_enc }}'
+        user_account_key: '{{ regular_account_key }}'
 
     - name: Create Ansible Service Account
       import_role:

@@ -62,6 +62,20 @@
         state: yes
         persistent: yes
 
+    - name: Add ExcludePath's to the scan.conf
+      lineinfile:
+        path: '{{ clamav_daemon_config_path }}'
+        insertafter: 'EOF'
+        line: '{{ item }}'
+        state: present
+      with_items:
+        - 'ExcludePath ^/proc/'
+        - 'ExcludePath ^/sys/'
+        - 'ExcludePath ^/dev/'
+        - 'ExcludePath ^/run/'
+        - 'ExcludePath ^/var/log/lastlog'
+        - 'ExcludePath ^/remotehome/'
+
     - name: Import geerlingguy.firewall role
       import_role:
         name: geerlingguy.firewall

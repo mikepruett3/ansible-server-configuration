@@ -41,6 +41,10 @@
       import_role:
         name: geerlingguy.ntp
 
+    - name: Import geerlingguy.clamav role
+      import_role:
+        name: geerlingguy.clamav
+
     - name: Import geerlingguy.firewall role
       import_role:
         name: geerlingguy.firewall

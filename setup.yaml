@@ -76,6 +76,31 @@
         - 'ExcludePath ^/var/log/lastlog'
         - 'ExcludePath ^/remotehome/'
 
+    - name: Change the User to root in the scan.conf
+      lineinfile:
+        path: '{{ clamav_daemon_config_path }}'
+        regexp: '^User'
+        line: 'User root'
+        state: present
+      notify: restart clamav daemon
+
+    - name: Upload ClamAV Scan Scripts to Server
+      copy:
+        src: 'scripts/'
+        dest: '/usr/local/bin/'
+
+    - name: Setup ClamAV Daily Scan cronjob
+      cron:
+        name: "ClamAV Daily Scan"
+        special_time: daily
+        job: /usr/local/bin/clam_daily.sh
+
+    - name: Setup ClamAV Monthly Full Scan cronjob
+      cron:
+        name: "ClamAV Monthly Scan"
+        special_time: monthly
+        job: /usr/local/bin/clam_monthly.sh
+
     - name: Import geerlingguy.firewall role
       import_role:
         name: geerlingguy.firewall

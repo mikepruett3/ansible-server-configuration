@@ -64,9 +64,6 @@
       - vars/main.yaml
 
     tasks:
-    #- name: Import mikepruett3.user_setup role
-    #  import_role:
-    #    name: mikepruett3.user_setup
 
     - name: Import geerlingguy.ntp role
       import_role:

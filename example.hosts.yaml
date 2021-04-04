@@ -18,7 +18,5 @@ all:
         regular_pass_enc: "encrypted-password-for-regular-account"
         regular_account_key: "user.key"
         key_repo: "/path/to/key/repo/"
-        security_ssh_port: 22
-        security_ssh_password_authentication: "no"
         security_sudoers_passwordless: ["myserviceuser"]
         security_sudoers_passworded: ["myuser"]

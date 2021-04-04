@@ -110,3 +110,7 @@
     - name: Import geerlingguy.firewall role
       import_role:
         name: geerlingguy.firewall
+
+    - name: Import bguerel.update_reboot role
+      import_role:
+        name: bguerel.update_reboot

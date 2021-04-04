@@ -9,5 +9,5 @@ $(command -v find) / \
     | grep -v "/run" \
     | grep -v "/var/log/lastlog" \
     | grep -v "nohup" >> /tmp/filelist.txt
-$(command -v clamdscan) --multiscan --log /root/scanlog_$timestamp.txt --file-list=/tmp/filelist.txt
+$(command -v clamdscan) --multiscan --log /root/scans/scanlog_$timestamp.txt --file-list=/tmp/filelist.txt
 rm -f /tmp/filelist.txt

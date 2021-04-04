@@ -88,6 +88,12 @@
       copy:
         src: 'scripts/'
         dest: '/usr/local/bin/'
+        mode: 0777
+
+    - name: Create Scan Log directory
+      file:
+        path: '/root/scans/'
+        state: directory
 
     - name: Setup ClamAV Daily Scan cronjob
       cron:

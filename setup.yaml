@@ -45,6 +45,18 @@
       import_role:
         name: geerlingguy.clamav
 
+    - name: Set antivirus_can_scan_system SELinux boolean
+      seboolean:
+        name: antivirus_can_scan_system
+        state: yes
+        persistent: yes
+
+    - name: Set clamd_use_jit SELinux boolean
+      seboolean:
+        name: clamd_use_jit
+        state: yes
+        persistent: yes
+
     - name: Import geerlingguy.firewall role
       import_role:
         name: geerlingguy.firewall

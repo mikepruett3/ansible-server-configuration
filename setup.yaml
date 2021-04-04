@@ -47,7 +47,7 @@
 
     - name: Install setup custom fact
       copy:
-        src: setup.fact
+        src: facts.d/setup.fact
         dest: /etc/ansible/facts.d
       #when: not ansible_local.preferences.setup.provisioned
 

@@ -32,7 +32,7 @@
         block: |
           Host {{ inventory_hostname }}
             User {{ ansible_service_user }}
-            IdentityFile {{ key_repo }}/{{ user_account }}@{{ ansible_hostname }}
+            IdentityFile {{ key_repo }}/{{ user_account }}@{{ inventory_hostname }}
       delegate_to: localhost
 
     - name: Install libsemanage-python package for Managing SELinux booleans (RHEL 7)

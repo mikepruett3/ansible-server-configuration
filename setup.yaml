@@ -47,10 +47,6 @@
         state: present
       when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '8'
 
-    - name: Import mikepruett3.user_setup role
-      import_role:
-        name: mikepruett3.user_setup
-
     - name: Import geerlingguy.repo-epel role
       import_role:
         name: geerlingguy.repo-epel
@@ -58,6 +54,19 @@
     - name: Import geerlingguy.security role
       import_role:
         name: geerlingguy.security
+
+  - hosts: all
+    gather_facts: true
+    remote_user: '{{ ansible_service_user }}'
+    become: true
+
+    vars_files:
+      - vars/main.yaml
+
+    tasks:
+    #- name: Import mikepruett3.user_setup role
+    #  import_role:
+    #    name: mikepruett3.user_setup
 
     - name: Import geerlingguy.ntp role
       import_role:
@@ -128,15 +137,6 @@
       import_role:
         name: geerlingguy.firewall
 
-  - hosts: all
-    gather_facts: true
-    remote_user: '{{ ansible_service_user }}'
-    become: true
-
-    vars_files:
-      - vars/main.yaml
-
-    tasks:
     - name: Import bguerel.update_reboot role
       import_role:
         name: bguerel.update_reboot

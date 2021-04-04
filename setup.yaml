@@ -25,6 +25,11 @@
         user_account_key: '{{ regular_account_key }}'
         key_repository: '{{ key_repo }}'
 
+    - name: Install libsemanage-python package for Managing SELinux booleans
+      package:
+        name: 'libsemanage-python'
+        state: present
+
     - name: Import mikepruett3.user_setup role
       import_role:
         name: mikepruett3.user_setup

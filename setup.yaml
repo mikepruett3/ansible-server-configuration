@@ -15,7 +15,7 @@
         user_password_enc: '{{ ansible_service_pass_enc }}'
         user_account_key: '{{ ansible_service_account_key }}'
         key_repository: '{{ key_repo }}'
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Create Regular Account
       import_role:
@@ -25,7 +25,7 @@
         user_password_enc: '{{ regular_pass_enc }}'
         user_account_key: '{{ regular_account_key }}'
         key_repository: '{{ key_repo }}'
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Add Ansible Service Account user to localhost ~/.ssh/config
       blockinfile:
@@ -36,20 +36,20 @@
             User {{ ansible_service_user }}
             IdentityFile {{ key_repo }}/{{ ansible_service_account_private_key }}
       delegate_to: localhost
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Create directory for ansible custom facts
       file:
         state: directory
         recurse: yes
         path: /etc/ansible/facts.d
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Install setup custom fact
       copy:
         src: setup.fact
         dest: /etc/ansible/facts.d
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Install libsemanage-python package for Managing SELinux booleans (RHEL 7)
       package:
@@ -57,7 +57,7 @@
         state: present
       when:
         - ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
-        - not ansible_local.preferences.setup.provisioned
+        #- not ansible_local.preferences.setup.provisioned
 
     - name: Install python3-libsemanage package for Managing SELinux booleans (RHEL 8)
       package:
@@ -65,17 +65,17 @@
         state: present
       when:
         - ansible_os_family == "RedHat" and ansible_distribution_major_version == '8'
-        - not ansible_local.preferences.setup.provisioned
+        #- not ansible_local.preferences.setup.provisioned
 
     - name: Import geerlingguy.repo-epel role
       import_role:
         name: geerlingguy.repo-epel
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
     - name: Import geerlingguy.security role
       import_role:
         name: geerlingguy.security
-      when: not ansible_local.preferences.setup.provisioned
+      #when: not ansible_local.preferences.setup.provisioned
 
   - hosts: all
     gather_facts: true

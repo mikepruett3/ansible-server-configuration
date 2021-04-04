@@ -30,7 +30,7 @@
         path: ~/.ssh/config
         insertafter: 'EOF'
         block: |
-          Host {{ ansible_hostname }}
+          Host {{ inventory_hostname }}
             User {{ ansible_service_user }}
             IdentityFile {{ key_repo }}/{{ user_account }}@{{ ansible_hostname }}
       delegate_to: localhost
@@ -131,6 +131,7 @@
   - hosts: all
     gather_facts: true
     remote_user: '{{ ansible_service_user }}'
+    become: true
 
     vars_files:
       - vars/main.yaml

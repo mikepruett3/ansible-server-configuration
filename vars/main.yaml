@@ -1,8 +1,8 @@
 ---
-firewall_allowed_tcp_ports:
-  - "22"
-  - "80"
-  - "443"
+#firewall_allowed_tcp_ports:
+#  - "22"
+#  - "80"
+#  - "443"
 
 ntp_timezone: America/Chicago
 ntp_area: 'north-america'

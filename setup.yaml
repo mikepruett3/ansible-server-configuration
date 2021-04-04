@@ -25,10 +25,17 @@
         user_account_key: '{{ regular_account_key }}'
         key_repository: '{{ key_repo }}'
 
-    - name: Install libsemanage-python package for Managing SELinux booleans
+    - name: Install libsemanage-python package for Managing SELinux booleans (RHEL 7)
       package:
         name: 'libsemanage-python'
         state: present
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
+
+    - name: Install python3-libsemanage package for Managing SELinux booleans (RHEL 8)
+      package:
+        name: 'python3-libsemanage'
+        state: present
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '8'
 
     - name: Import mikepruett3.user_setup role
       import_role:

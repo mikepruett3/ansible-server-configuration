@@ -20,3 +20,4 @@ all:
         key_repo: "/path/to/key/repo/"
         security_sudoers_passwordless: ["myserviceuser"]
         security_sudoers_passworded: ["myuser"]
+        update_reboot_timeout: 300

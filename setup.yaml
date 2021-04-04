@@ -2,6 +2,7 @@
   - hosts: all
     gather_facts: true
     remote_user: root
+    when: not ansible_local.preferences.setup.provisioned
 
     vars_files:
       - vars/main.yaml
@@ -34,6 +35,17 @@
             User {{ ansible_service_user }}
             IdentityFile {{ key_repo }}/{{ ansible_service_account_private_key }}
       delegate_to: localhost
+
+    - name: Create directory for ansible custom facts
+      file:
+        state: directory
+        recurse: yes
+        path: /etc/ansible/facts.d
+
+    - name: Install setup custom fact
+      copy:
+        src: setup.fact
+        dest: /etc/ansible/facts.d
 
     - name: Install libsemanage-python package for Managing SELinux booleans (RHEL 7)
       package:

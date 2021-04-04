@@ -25,6 +25,16 @@
         user_account_key: '{{ regular_account_key }}'
         key_repository: '{{ key_repo }}'
 
+    - name: Add Ansible Service Account user to localhost ~/.ssh/config
+      blockinfile:
+        path: ~/.ssh/config
+        insertafter: 'EOF'
+        block: |
+          Host {{ ansible_hostname }}
+            User {{ ansible_service_user }}
+            IdentityFile {{ key_repo }}/{{ user_account }}@{{ ansible_hostname }}
+      delegate_to: localhost
+
     - name: Install libsemanage-python package for Managing SELinux booleans (RHEL 7)
       package:
         name: 'libsemanage-python'
@@ -118,6 +128,14 @@
       import_role:
         name: geerlingguy.firewall
 
+  - hosts: all
+    gather_facts: true
+    remote_user: '{{ ansible_service_user }}'
+
+    vars_files:
+      - vars/main.yaml
+
+    tasks:
     - name: Import bguerel.update_reboot role
       import_role:
         name: bguerel.update_reboot
